@@ -17,4 +17,6 @@ public class SearchTests {
 
         $("#search").shouldHave(text("selenide.org"));
     }
+
+
 }
