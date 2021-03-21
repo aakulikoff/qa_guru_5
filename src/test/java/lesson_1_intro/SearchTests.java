@@ -1,6 +1,7 @@
 package lesson_1_intro;
 
-import org.junit.jupiter.api.Test;
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byName;
@@ -20,3 +21,4 @@ public class SearchTests {
 
 
 }
+
