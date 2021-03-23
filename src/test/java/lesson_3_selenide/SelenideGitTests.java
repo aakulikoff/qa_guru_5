@@ -28,7 +28,7 @@ public class SelenideGitTests {
     @Test
     void dragAndDropTest() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
-        $("#columns").shouldBe(appear);
+        $("#columns").should(appear);
         $("#column-a").shouldHave(text("A"));
         $("#column-b").shouldHave(text("B"));
         $("#column-a").dragAndDropTo("#column-b");
