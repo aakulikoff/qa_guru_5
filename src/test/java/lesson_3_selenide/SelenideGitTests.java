@@ -1,10 +1,10 @@
 package lesson_3_selenide;
 
-import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.*;
 import com.codeborne.selenide.conditions.Text;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -15,12 +15,27 @@ public class SelenideGitTests {
 
         open("https://github.com/");
         $(byName("q")).setValue("Selenide").pressEnter();
-        $((".f4.text-normal"),0).shouldHave(text("selenide/selenide"));
+        $((".f4.text-normal"), 0).shouldHave(text("selenide/selenide"));
         getFocusedElement().click();
         $(byLinkText("selenide/selenide")).click();
         $(byText("Wiki")).click();
         $(byText("Soft assertions")).shouldBe(Condition.visible).click();
         $(".markdown-body").shouldHave(text("Using JUnit5 extend test class"));
+
+    }
+
+
+    @Test
+    void dragAndDropTest() {
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+        $("#columns").shouldBe(appear);
+        $("#column-a").shouldHave(text("A"));
+        $("#column-b").shouldHave(text("B"));
+        $("#column-a").dragAndDropTo("#column-b");
+//        Selenide.actions().dragAndDrop($("#column-a"),$("#column-b"));
+        $("#column-a").shouldHave(text("B"));
+        $("#column-b").shouldHave(text("A"));
+
 
     }
 }
